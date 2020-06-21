@@ -1,12 +1,25 @@
 <h2>ToDo list</h2>
 
 <div>
-  <!-- TODO add new item -->
+  <label>Add todo:
+    <input #itemTitle
+    (input)="onInputChange(itemTitle.value)">
+  </label>
+  <button (click)="add(itemTitle.value); itemTitle.value = ''">
+    add
+  </button>
+  <!-- add details; show only íf user entered something -->
+  <div *ngIf="showDetails">
+    <!-- TODO allow entering of item's details -->
+    <span>add details here</span>
+  </div>
 </div>
 
 <ul>
   <li *ngFor="let item of items">
     {{item.id}}: {{item.title}}
-    <!-- TODO delete new item -->
+    <!-- TODO delete an item -->
+    <button title="delete item"
+    (click)="delete(item)">x</button>
   </li>
 </ul>
