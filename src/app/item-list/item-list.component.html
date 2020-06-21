@@ -1,13 +1,16 @@
 <h2>ToDo list</h2>
 
 <div>
-  <label>Add todo:
-    <input #itemTitle
-    (input)="onInputChange(itemTitle.value)">
-  </label>
-  <button (click)="add(itemTitle.value); itemTitle.value = ''">
+  <mat-form-field>
+    <mat-label>Add a todo item</mat-label>
+    <input matInput #itemTitle
+           (input)="onInputChange(itemTitle.value)">
+  </mat-form-field>
+  <button mat-flat-button color="primary"
+          (click)="add(itemTitle.value); itemTitle.value = ''" >
     add
   </button>
+
   <!-- add details; show only íf user entered something -->
   <div *ngIf="showDetails">
     <!-- TODO allow entering of item's details -->
@@ -15,11 +18,12 @@
   </div>
 </div>
 
-<ul>
-  <li *ngFor="let item of items">
+<mat-list>
+  <mat-list-item *ngFor="let item of items">
     {{item.id}}: {{item.title}}
-    <!-- TODO delete an item -->
-    <button title="delete item"
-    (click)="delete(item)">x</button>
-  </li>
-</ul>
+    <button title="delete item" mat-icon-button color="warn"
+            (click)="delete(item)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
