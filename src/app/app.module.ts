@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './in-memory-data.service';
+import { ItemListComponent } from './item-list/item-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ItemListComponent
   ],
   imports: [
     BrowserModule,

@@ -10,10 +10,26 @@ export class InMemoryDataService implements InMemoryDbService {
   constructor() { }
 
   createDb() {
-    return [
-      { id: 1, title: 'Test item' },
-      { id: 2, title: 'Test item 2' }
-    ];
+    return {items: [
+        {
+          id: 1,
+          title: 'Test item',
+          description: 'Test description',
+          completed: false,
+          urgent: true,
+          important: true,
+          targetDate: '2020-06-21'
+        },
+        {
+          id: 2,
+          title: 'Test item 2',
+          description: 'Test description',
+          completed: false,
+          urgent: false,
+          important: false,
+          targetDate: '2020-06-24'
+        }
+      ]};
   }
 
   genId(items: Item[]): number {
