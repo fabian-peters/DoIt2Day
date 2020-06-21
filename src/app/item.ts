@@ -5,5 +5,5 @@ export interface Item {
   completed: boolean;
   urgent: boolean;
   important: boolean;
-  targetDate: any; // TODO which type to use for date?
+  targetDate: Date;
 }
