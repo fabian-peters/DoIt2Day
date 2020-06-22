@@ -17,6 +17,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { UpNextComponent } from './up-next/up-next.component';
 import {MatCardModule} from '@angular/material/card';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import {MatCardModule} from '@angular/material/card';
     ItemListComponent,
     AddItemComponent,
     ToolbarComponent,
-    UpNextComponent
+    UpNextComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import {MatCardModule} from '@angular/material/card';
     MatFormFieldModule,
     MatInputModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
