@@ -14,47 +14,47 @@ export class InMemoryDataService implements InMemoryDbService {
         {
           id: 1,
           title: 'Test item 1',
-          description: 'Test description',
+          description: 'Should be third in Up next',
           completed: false,
-          urgent: true,
-          important: true,
+          urgent: false,
+          important: false,
           targetDate: new Date()
         },
         {
           id: 2,
           title: 'Test item 2 with a really, really long title',
-          description: 'Test description',
+          description: 'Should be second in Up next',
           completed: false,
           urgent: false,
-          important: false,
-          targetDate: new Date('2020-06-24')
+          important: true,
+          targetDate: new Date('2020-07-01')
         },
         {
           id: 3,
           title: 'Test item 3 long title',
-          description: 'Test description',
+          description: 'Should be first in Up next',
           completed: false,
-          urgent: false,
+          urgent: true,
           important: false,
-          targetDate: new Date('2020-06-23')
+          targetDate: new Date('2020-06-20')
         },
         {
           id: 4,
           title: 'Test item 4',
-          description: 'Test description',
+          description: 'Should not be in Up next',
           completed: false,
           urgent: true,
-          important: false,
-          targetDate: new Date('2020-06-22')
+          important: true,
+          targetDate: new Date('2020-07-22')
         },
         {
           id: 5,
           title: 'Test item 5',
-          description: 'Test description',
+          description: 'Should not be in Up next',
           completed: false,
           urgent: false,
-          important: true,
-          targetDate: new Date('2020-06-26')
+          important: false,
+          targetDate: new Date('2020-07-26')
         }
       ]};
   }
