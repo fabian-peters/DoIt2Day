@@ -8,3 +8,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 button, a[mat-button] {
   text-transform: uppercase
 }
+
+h2 {
+  margin-left: 5px;
+}

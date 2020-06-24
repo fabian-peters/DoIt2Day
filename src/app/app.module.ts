@@ -19,6 +19,11 @@ import { UpNextComponent } from './up-next/up-next.component';
 import {MatCardModule} from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
+import { OverviewComponent } from './overview/overview.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -48,7 +53,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatInputModule,
     MatToolbarModule,
     MatCardModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatBadgeModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
