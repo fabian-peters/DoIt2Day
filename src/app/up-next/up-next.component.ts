@@ -27,7 +27,7 @@ export class UpNextComponent implements OnInit {
    */
   getItems(): void {
     this.itemService.getItems()
-      .subscribe(items => this.items = items);
+      .subscribe(items => this.items = items.filter(item => !item.completed));
   }
 
   /**

@@ -12,6 +12,15 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     return {items: [
         {
+          id: 0,
+          title: 'Test item 0',
+          description: 'This item is completed',
+          completed: true,
+          urgent: true,
+          important: true,
+          targetDate: new Date('2020-01-01')
+        },
+        {
           id: 1,
           title: 'Test item 1',
           description: 'Should be third in Up next',
