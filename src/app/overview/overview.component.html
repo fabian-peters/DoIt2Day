@@ -3,15 +3,18 @@
   <!-- TODO add direct link to filtered view -->
   <a mat-icon-button routerLink="/all">
     <mat-icon matBadge="{{numberOfUrgentItems}}" matBadgeHidden="{{numberOfUrgentItems<1}}" matBadgeColor="warn"
-              matTooltip="Urgent" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100">notifications_active</mat-icon>
+              matTooltip="Urgent" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
+              fontSet="material-icons-round">notifications_active</mat-icon>
   </a>
   <a mat-icon-button routerLink="/all">
     <mat-icon matBadge="{{numberOfImportantItems}}" matBadgeHidden="{{numberOfImportantItems<1}}" matBadgeColor="warn"
-              matTooltip="Important" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100">priority_high</mat-icon>
+              matTooltip="Important" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
+              fontSet="material-icons-round">priority_high</mat-icon>
   </a>
   <a mat-icon-button routerLink="/all">
     <mat-icon matBadge="{{numberOfOverdueItems}}" matBadgeHidden="{{numberOfOverdueItems<1}}" matBadgeColor="warn"
-              matTooltip="Overdue" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100">hourglass_bottom</mat-icon>
+              matTooltip="Overdue" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
+              fontSet="material-icons-round">hourglass_bottom</mat-icon>
   </a>
 
   <a mat-button routerLink="/all">view all</a>
