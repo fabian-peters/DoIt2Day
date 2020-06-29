@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Item} from '../item';
-import {ItemService} from '../item.service';
+import { Component, OnInit } from '@angular/core';
+import { Item } from '../item';
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-add-item',
@@ -9,35 +9,44 @@ import {ItemService} from '../item.service';
 })
 export class AddItemComponent implements OnInit {
 
-  showDetails = false;
+  newItem: Item = AddItemComponent.createDefaultItem();
 
   constructor(
     private itemService: ItemService
   ) { }
 
+  private static createDefaultItem(): Item {
+    return {
+      title: '',
+      description: '',
+      completed: false,
+      urgent: false,
+      important: false,
+      targetDate: new Date()
+    } as Item;
+  }
+
   ngOnInit(): void {
   }
 
-  add(title: string): void {
-    title = title.trim();
-    if (!title) { return; }
-    this.itemService.addItem({title} as Item)
+  addItem(): void {
+    // trim inputs
+    this.newItem.title = this.newItem.title.trim();
+    this.newItem.description = this.newItem.description.trim();
+
+    // validate inputs
+    if (!this.newItem.title) { return; } // title must not be empty
+    if (!this.newItem.targetDate) { this.newItem.targetDate = new Date(); } // use today if due date is not specified
+
+    // save item to db
+    this.itemService.addItem(this.newItem)
       .subscribe(item => {
-        // TODO fix: add to local items for display --> this.items.push(item);
+        /* TODO fix: add to local items for display --> this.items.push(item);
+                     or show in Up next? */
       });
 
-    // hide details again
-    this.showDetails = false;
-  }
-
-  /**
-   * Event handler for keystrokes in 'title' of new item.
-   * Update {@code showDetails} to show/hide details of new item.
-   *
-   * @param text the text in the input field
-   */
-  onInputChange(text: string): void {
-    this.showDetails = !(text == null || text === '');
+    // reset newItem
+    this.newItem = AddItemComponent.createDefaultItem();
   }
 
 }
