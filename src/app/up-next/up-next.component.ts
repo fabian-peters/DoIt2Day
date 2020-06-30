@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../item';
 import { ItemService } from '../item.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-up-next',
@@ -14,6 +16,7 @@ export class UpNextComponent implements OnInit {
 
   constructor(
     private itemService: ItemService,
+    public dialog: MatDialog
   ) {
   }
 
@@ -28,6 +31,15 @@ export class UpNextComponent implements OnInit {
   getItems(): void {
     this.itemService.getItems()
       .subscribe(items => this.items = items.filter(item => !item.completed));
+  }
+
+  /**
+   * Mark items as complete and reload topItems
+   */
+  completeItem(item: Item) {
+    item.completed = true;
+    this.itemService.updateItem(item);
+    this.ngOnInit();
   }
 
   /**
@@ -147,6 +159,17 @@ export class UpNextComponent implements OnInit {
       items = items.filter(item => item !== filterItem);
     });
     return items;
+  }
+
+  openEditDialog(item: Item): void {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      width: '50%', // TODO min-width ca. 300px
+      data: item
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.itemService.updateItem(result); // TODO fix changing item even when 'cancel'
+    });
   }
 
 }

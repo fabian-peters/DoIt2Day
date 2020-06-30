@@ -26,6 +26,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -35,36 +37,38 @@ import { MatNativeDateModule } from '@angular/material/core';
     ToolbarComponent,
     UpNextComponent,
     DashboardComponent,
-    OverviewComponent
+    OverviewComponent,
+    EditDialogComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
+    imports: [
+        BrowserModule,
+        HttpClientModule,
 
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    ),
+        // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+        // and returns simulated server responses.
+        // Remove it when a real server is ready to receive requests.
+        HttpClientInMemoryWebApiModule.forRoot(
+            InMemoryDataService, {dataEncapsulation: false}
+        ),
 
-    BrowserAnimationsModule,
-    MatListModule,
-    MatIconModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatToolbarModule,
-    MatCardModule,
-    AppRoutingModule,
-    MatCheckboxModule,
-    FormsModule,
-    MatBadgeModule,
-    MatTooltipModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatNativeDateModule
-  ],
+        BrowserAnimationsModule,
+        MatListModule,
+        MatIconModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatToolbarModule,
+        MatCardModule,
+        AppRoutingModule,
+        MatCheckboxModule,
+        FormsModule,
+        MatBadgeModule,
+        MatTooltipModule,
+        ReactiveFormsModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatDialogModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,16 @@
+.item-row {
+  display: flex;
+  align-items: baseline;
+}
+
+.item-row mat-form-field {
+  flex-grow: 2;
+}
+
+.item-row button {
+  margin-left: 5px;
+}
+
+mat-dialog-actions {
+  justify-content: flex-end;
+}
