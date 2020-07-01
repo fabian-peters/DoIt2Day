@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Item} from '../item';
-import {ItemService} from '../item.service';
+import { Item } from '../item';
+import { ItemService } from '../item.service';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-item-list',
@@ -8,10 +10,13 @@ import {ItemService} from '../item.service';
   styleUrls: ['./item-list.component.css']
 })
 export class ItemListComponent implements OnInit {
+
   items: Item[];
+  currentDate = new Date();
 
   constructor(
-    private itemService: ItemService
+    private itemService: ItemService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +34,18 @@ export class ItemListComponent implements OnInit {
   }
 
   complete() {
-    // TODO complete item (mark as completed and delete from server?
+    // TODO complete item (completed = true)
   }
+
+  openEditDialog(item: Item): void {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      width: '50%', // TODO min-width ca. 300px
+      data: item
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.itemService.updateItem(result); // TODO fix changing item even when 'cancel'
+    });
+  }
+
 }

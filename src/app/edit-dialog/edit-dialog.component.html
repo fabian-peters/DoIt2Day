@@ -23,12 +23,12 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <button mat-icon-button [ngStyle]="{'opacity': data.important ? 'inherit': '50%'}"
+      <button mat-icon-button [ngStyle]="{'opacity': data.important ? 'inherit': '30%'}"
               (click)="data.important = !data.important">
         <mat-icon matTooltip="Important" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
                   fontSet="material-icons-round">priority_high</mat-icon> <!-- TODO fix/remove tooltip -->
       </button>
-      <button mat-icon-button [ngStyle]="{'opacity': data.urgent ? 'inherit' : '50%'}"
+      <button mat-icon-button [ngStyle]="{'opacity': data.urgent ? 'inherit' : '30%'}"
               (click)="data.urgent = !data.urgent">
         <mat-icon matTooltip="Urgent" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
                   fontSet="material-icons-round">notifications_active</mat-icon> <!-- TODO fix/remove tooltip -->

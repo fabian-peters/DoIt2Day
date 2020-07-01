@@ -3,10 +3,26 @@
 
 <mat-list>
   <mat-list-item *ngFor="let item of items">
-    {{item.id}}: {{item.title}}
-    <button title="delete item" mat-icon-button color="warn"
-            (click)="delete(item)">
-      <mat-icon>delete</mat-icon>
+    <mat-checkbox [(ngModel)]="item.completed">
+      <b>{{item.title}}</b>
+      <span class="description">{{item.description}}</span>
+    </mat-checkbox>
+
+    <span>{{item.targetDate | date: 'yyyy-MM-dd'}}</span>
+    <div class="icons">
+      <mat-icon matTooltip="Overdue" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
+                fontSet="material-icons-round" [ngStyle]="{'opacity': (item.targetDate | date: 'yyyy-MM-dd') <= (currentDate | date: 'yyyy-MM-dd') ? '60%': '0%'}">hourglass_bottom</mat-icon>
+      <mat-icon matTooltip="Urgent" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
+                fontSet="material-icons-round" [ngStyle]="{'opacity': item.urgent ? '60%': '0%'}">notifications_active</mat-icon>
+      <mat-icon matTooltip="Important" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
+                fontSet="material-icons-round" [ngStyle]="{'opacity': item.important ? '60%': '0%'}">priority_high</mat-icon>
+    </div>
+
+    <button mat-icon-button (click)="openEditDialog(item)">
+      <mat-icon fontSet="material-icons-round">edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="delete(item)">
+      <mat-icon fontSet="material-icons-round">delete</mat-icon>
     </button>
   </mat-list-item>
 </mat-list>
