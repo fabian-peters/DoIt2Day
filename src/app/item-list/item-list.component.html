@@ -3,6 +3,7 @@
 <!-- TODO add filtering: Chips for important, urgent, overdue? Slide Toggle show/hide completed -->
 
 <mat-list>
+  <!-- TODO display message if empty -->
   <mat-list-item *ngFor="let item of items">
     <mat-checkbox [(ngModel)]="item.completed" (change)="completeItem(item)">
       <b>{{item.title}}</b>
