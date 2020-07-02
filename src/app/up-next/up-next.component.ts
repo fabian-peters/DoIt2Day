@@ -38,7 +38,8 @@ export class UpNextComponent implements OnInit {
    */
   completeItem(item: Item) {
     item.completed = true;
-    this.itemService.updateItem(item);
+    this.itemService.updateItem(item)
+      .subscribe();
     this.ngOnInit();
   }
 
@@ -168,7 +169,8 @@ export class UpNextComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.itemService.updateItem(result); // TODO fix changing item even when 'cancel'
+      this.itemService.updateItem(result)
+        .subscribe(); // TODO fix changing item even when 'cancel'
     });
   }
 

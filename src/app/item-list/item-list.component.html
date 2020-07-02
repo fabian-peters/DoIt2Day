@@ -1,9 +1,10 @@
 <h2>All items</h2>
 <a mat-button routerLink="/dashboard">go back</a>
+<!-- TODO add filtering: Chips for important, urgent, overdue? Slide Toggle show/hide completed -->
 
 <mat-list>
   <mat-list-item *ngFor="let item of items">
-    <mat-checkbox [(ngModel)]="item.completed">
+    <mat-checkbox [(ngModel)]="item.completed" (change)="completeItem(item)">
       <b>{{item.title}}</b>
       <span class="description">{{item.description}}</span>
     </mat-checkbox>

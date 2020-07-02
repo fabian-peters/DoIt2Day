@@ -28,13 +28,15 @@ export class ItemListComponent implements OnInit {
       .subscribe(items => this.items = items);
   }
 
-  delete(item: Item) {
+  delete(item: Item): void {
     this.items = this.items.filter(i => i !== item);
-    this.itemService.deleteItem(item).subscribe();
+    this.itemService.deleteItem(item)
+      .subscribe();
   }
 
-  complete() {
-    // TODO complete item (completed = true)
+  completeItem(item: Item): void {
+    this.itemService.updateItem(item)
+      .subscribe();
   }
 
   openEditDialog(item: Item): void {
@@ -44,7 +46,8 @@ export class ItemListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.itemService.updateItem(result); // TODO fix changing item even when 'cancel'
+      this.itemService.updateItem(result)
+        .subscribe(); // TODO fix changing item even when 'cancel'
     });
   }
 

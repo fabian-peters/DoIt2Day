@@ -21,7 +21,7 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button mat-button (click)="completeItem(item); items = []">complete</button>
+      <button mat-button (click)="completeItem(item)" [disabled]="item.completed">complete</button>
       <button mat-button (click)="openEditDialog(item)">edit</button>
     </mat-card-actions>
   </mat-card>
