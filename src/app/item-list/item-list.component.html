@@ -40,10 +40,12 @@
     </div>
 
     <button mat-icon-button (click)="openEditDialog(item)">
-      <mat-icon fontSet="material-icons-round">edit</mat-icon>
+      <mat-icon matTooltip="Edit" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
+                fontSet="material-icons-round">edit</mat-icon>
     </button>
     <button mat-icon-button color="warn" (click)="delete(item)">
-      <mat-icon fontSet="material-icons-round">delete</mat-icon>
+      <mat-icon matTooltip="Delete" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
+                fontSet="material-icons-round">delete</mat-icon>
     </button>
   </mat-list-item>
 </mat-list>
