@@ -1,7 +1,10 @@
 <h2>Up next</h2>
 
 <div class="card-container">
-  <!-- TODO display message if empty -->
+  <div *ngIf="items.length == 0" class="empty-message">
+    There is nothing to do! Good work!
+  </div>
+
   <mat-card *ngFor="let item of topItems">
     <!-- TODO refine layout -->
     <mat-card-header>

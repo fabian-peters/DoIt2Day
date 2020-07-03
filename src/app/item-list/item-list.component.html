@@ -22,7 +22,10 @@
 </div>
 
 <mat-list>
-  <!-- TODO display message if empty -->
+  <mat-list-item *ngIf="items.length == 0" class="empty-message">
+    No items found. Try adjusting the filters or add new items.
+  </mat-list-item>
+
   <mat-list-item *ngFor="let item of items">
     <mat-checkbox [(ngModel)]="item.completed" (change)="completeItem(item)">
       <b>{{item.title}}</b>

@@ -12,7 +12,7 @@ import { FormControl } from '@angular/forms';
 })
 export class ItemListComponent implements OnInit {
 
-  items: Item[];
+  items: Item[] = [];
   currentDate = new Date();
 
   showCompleted = false;

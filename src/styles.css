@@ -12,3 +12,8 @@ button, a[mat-button] {
 h2 {
   margin-left: 5px;
 }
+
+.empty-message {
+  opacity: 75%;
+  font-style: italic;
+}
