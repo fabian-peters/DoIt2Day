@@ -18,8 +18,4 @@ export class EditDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
 }

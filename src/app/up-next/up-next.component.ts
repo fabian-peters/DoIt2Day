@@ -29,6 +29,7 @@ export class UpNextComponent implements OnInit {
    */
   completeItem(item: Item) {
     item.completed = true;
+
     this.itemService.updateItem(item)
       .subscribe(() => {
         // share changes with parent
@@ -158,12 +159,27 @@ export class UpNextComponent implements OnInit {
   openEditDialog(item: Item): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '50%', // TODO min-width ca. 300px
-      data: item
+      // pass values manually to not change item outside of dialog TODO find better solution
+      data: {
+        id: item.id,
+        title: item.title,
+        description: item.description,
+        completed: item.completed,
+        urgent: item.urgent,
+        important: item.important,
+        targetDate: item.targetDate
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.itemService.updateItem(result)
-        .subscribe(); // TODO fix changing item even when 'cancel'
+      // update only on 'save'
+      if (result !== undefined && result !== '') {
+        const index = this.items.indexOf(item);
+        this.items[index] = result;
+
+        this.itemService.updateItem(result)
+          .subscribe();
+      }
     });
   }
 
