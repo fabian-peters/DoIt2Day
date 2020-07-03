@@ -7,7 +7,6 @@
   <mat-form-field class="filter">
     <mat-label>Filter</mat-label>
     <mat-select [formControl]="filters" multiple (valueChange)="ngOnInit()">
-      <!-- TODO remove or keep custom label? -->
       <mat-select-trigger>
         {{filters.value ? filters.value[0] : ''}}
         <span *ngIf="filters.value?.length > 1" class="additional-selection">
