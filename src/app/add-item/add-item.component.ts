@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Item } from '../item';
 import { ItemService } from '../item.service';
 
@@ -9,6 +9,7 @@ import { ItemService } from '../item.service';
 })
 export class AddItemComponent implements OnInit {
 
+  @Output() itemAdded = new EventEmitter<Item>();
   newItem: Item = AddItemComponent.createDefaultItem();
 
   constructor(
@@ -41,8 +42,8 @@ export class AddItemComponent implements OnInit {
     // save item to db
     this.itemService.addItem(this.newItem)
       .subscribe(item => {
-        /* TODO fix: add to local items for display --> this.items.push(item);
-                     or show in Up next? */
+        // share changes with parent
+        this.itemAdded.emit(item);
       });
 
     // reset newItem

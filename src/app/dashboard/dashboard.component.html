@@ -1,3 +1,3 @@
-<app-up-next></app-up-next>
-<app-overview></app-overview>
-<app-add-item></app-add-item>
+<app-up-next [items]="items" (itemsChange)="ngOnInit()"></app-up-next>
+<app-overview [items]="items"></app-overview>
+<app-add-item (itemAdded)="ngOnInit()"></app-add-item>

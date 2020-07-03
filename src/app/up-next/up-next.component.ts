@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Item } from '../item';
 import { ItemService } from '../item.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,7 +11,8 @@ import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 })
 export class UpNextComponent implements OnInit {
 
-  items: Item[] = [];
+  @Input() items: Item[];
+  @Output() itemsChange = new EventEmitter<Item[]>();
   currentDate = new Date();
 
   constructor(
@@ -21,16 +22,6 @@ export class UpNextComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // load ALL items here and filter later
-    this.getItems();
-  }
-
-  /**
-   * Load items from DB (via service).
-   */
-  getItems(): void {
-    this.itemService.getItems()
-      .subscribe(items => this.items = items.filter(item => !item.completed));
   }
 
   /**
@@ -39,8 +30,10 @@ export class UpNextComponent implements OnInit {
   completeItem(item: Item) {
     item.completed = true;
     this.itemService.updateItem(item)
-      .subscribe();
-    this.ngOnInit();
+      .subscribe(() => {
+        // share changes with parent
+        this.itemsChange.emit(this.items);
+      });
   }
 
   /**

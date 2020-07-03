@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Item } from '../item';
-import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-overview',
@@ -9,24 +8,13 @@ import { ItemService } from '../item.service';
 })
 export class OverviewComponent implements OnInit {
 
-  items: Item[] = [];
+  @Input() items: Item[] = [];
   currentDate = new Date();
 
-  constructor(
-    private itemService: ItemService
-  ) { }
-
-  ngOnInit(): void {
-    this.getItems();
+  constructor() {
   }
 
-  /**
-   * Load items from DB (via service).
-   * TODO avoid multiple DB request (also in other components)
-   */
-  getItems(): void {
-    this.itemService.getItems()
-      .subscribe(items => this.items = items.filter(item => !item.completed));
+  ngOnInit(): void {
   }
 
   get numberOfUrgentItems(): number {
