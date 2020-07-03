@@ -3,10 +3,10 @@
 <div class="control-container">
   <a mat-button routerLink="/dashboard">go back</a>
 
-  <mat-slide-toggle [(ngModel)]="showCompleted" color="primary" (change)="ngOnInit()">Show completed</mat-slide-toggle>
+  <mat-slide-toggle [(ngModel)]="showCompleted" color="primary" (change)="getItems()">Show completed</mat-slide-toggle>
   <mat-form-field class="filter">
     <mat-label>Filter</mat-label>
-    <mat-select [formControl]="filters" multiple (valueChange)="ngOnInit()">
+    <mat-select [formControl]="filters" multiple (valueChange)="getItems()">
       <mat-select-trigger>
         {{filters.value ? filters.value[0] : ''}}
         <span *ngIf="filters.value?.length > 1" class="additional-selection">
