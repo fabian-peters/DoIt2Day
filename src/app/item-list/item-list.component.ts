@@ -49,7 +49,9 @@ export class ItemListComponent implements OnInit {
     for (const filter of this.filters.value) {
       switch (filter) {
         case 'Overdue':
-          showItem = showItem && new Date(item.targetDate).setHours(0, 0, 0, 0) <= this.currentDate.getTime();
+          const dueDate = new Date(item.targetDate);
+          dueDate.setHours(0, 0, 0, 0); // only use days for comparison
+          showItem = showItem && dueDate <= this.currentDate;
           break;
         case 'Urgent':
           showItem = showItem && item.urgent;
