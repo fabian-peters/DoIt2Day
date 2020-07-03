@@ -4,6 +4,7 @@ import { ItemService } from '../item.service';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-item-list',
@@ -20,12 +21,25 @@ export class ItemListComponent implements OnInit {
   filterList: string[] = ['Overdue', 'Urgent', 'Important'];
 
   constructor(
+    private route: ActivatedRoute,
     private itemService: ItemService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
+    this.parseUrlFilter();
     this.getItems();
+  }
+
+  private parseUrlFilter(): void {
+    let filter = this.route.snapshot.paramMap.get('filter');
+
+    if (filter !== null && filter !== '') {
+      filter = filter.charAt(0).toUpperCase() + filter.slice(1); // capitalize first letter
+      if (this.filterList.includes(filter)) {
+        this.filters.setValue([filter]);
+      }
+    }
   }
 
   getItems(): void {
