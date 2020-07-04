@@ -8,7 +8,8 @@ import { Item } from './item';
 })
 export class ItemService {
 
-  itemsUrl = 'api/items';
+  baseUrl = 'http://localhost:4001'; // TODO properly get base url
+  itemsUrl = this.baseUrl + '/api/items';
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
@@ -25,7 +26,7 @@ export class ItemService {
 
   /** PUT: update the item in the server */
   updateItem(item: Item): Observable<any> {
-    return this.http.put(this.itemsUrl, item, this.httpOptions);
+    return this.http.put(`${this.itemsUrl}/${item._id}`, item, this.httpOptions);
   }
 
   /** POST: add a new item to the server */
@@ -34,8 +35,8 @@ export class ItemService {
   }
 
   /** DELETE: delete the item from the server */
-  deleteItem(item: Item | number): Observable<Item> {
-    const id = typeof item === 'number' ? item : item.id;
+  deleteItem(item: Item | string): Observable<Item> {
+    const id = typeof item === 'string' ? item : item._id;
     const url = `${this.itemsUrl}/${id}`;
 
     return this.http.delete<Item>(url, this.httpOptions);

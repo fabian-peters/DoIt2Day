@@ -39,7 +39,7 @@ describe('OverviewComponent', () => {
     // parent is responsible to filter completed items!
     component.items = [
       {
-        id: 0,
+        _id: '5f0104fdff2dc153583f5231',
         title: 'Mock item 1',
         description: 'This is a mocked overdue item',
         completed: false,
@@ -48,7 +48,7 @@ describe('OverviewComponent', () => {
         targetDate: new Date('2020-01-01')
       },
       {
-        id: 1,
+        _id: '5f0104fd3e2dc153583f53ea',
         title: 'Mock item 2',
         description: 'This is a mocked urgent item',
         completed: false,
@@ -57,7 +57,7 @@ describe('OverviewComponent', () => {
         targetDate: tomorrow
       },
       {
-        id: 2,
+        _id: '5f0104fd6a2dc153583f558b',
         title: 'Mock item 3',
         description: 'This is a mocked important item',
         completed: false,
@@ -66,7 +66,7 @@ describe('OverviewComponent', () => {
         targetDate: tomorrow
       },
       {
-        id: 3,
+        _id: '5f0104f5e22dc153583f51a2',
         title: 'Mock item 4',
         description: 'This is a mocked important item',
         completed: false,
@@ -75,7 +75,7 @@ describe('OverviewComponent', () => {
         targetDate: tomorrow
       },
       {
-        id: 4,
+        _id: '5f0104fd19e4c153583f53e1',
         title: 'Mock item 5',
         description: 'This is a mocked overdue and important item',
         completed: false,

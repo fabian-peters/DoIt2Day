@@ -42,7 +42,7 @@ describe('ItemService', () => {
     it('should return expected items', () => {
       const expectedItems = [
         {
-          id: 0,
+          _id: '5f0104fdff2dc153583f5231',
           title: 'Mock item 1',
           description: 'This is a mocked item for testing',
           completed: false,
@@ -51,7 +51,7 @@ describe('ItemService', () => {
           targetDate: new Date()
         },
         {
-          id: 1,
+          _id: '5f0104fdff2dc153a43f5642',
           title: 'Mock item 2',
           description: 'This is a mocked item for testing',
           completed: false,
@@ -109,7 +109,7 @@ describe('ItemService', () => {
 
     it('should update an item and return it', () => {
       const updateItem: Item = {
-        id: 0,
+        _id: '5f0104fdff2dc153583f5231',
         title: 'Mock item 1',
         description: 'This is a mocked item for testing #updateItem',
         completed: false,
@@ -123,7 +123,7 @@ describe('ItemService', () => {
         fail
       );
 
-      const req = httpTestingController.expectOne(itemService.itemsUrl);
+      const req = httpTestingController.expectOne(`${itemService.itemsUrl}/${updateItem._id}`);
       expect(req.request.method).toEqual('PUT');
       expect(req.request.body).toEqual(updateItem);
 
@@ -133,7 +133,7 @@ describe('ItemService', () => {
     // TODO needs error handling implemented
     xit('should turn 404 error into return of the update item', () => {
       const updateItem: Item = {
-        id: 1,
+        _id: '5f0104fde42dc153583f57a3',
         title: 'Mock item 2',
         description: 'This is a mocked item for testing #updateItem',
         completed: false,
@@ -172,7 +172,7 @@ describe('ItemService', () => {
       } as Item;
 
       const expectedItem: Item = {
-        id: 0,
+        _id: '5f0104fdff2dc153583f5231',
         title: 'New mock Item',
         description: 'This is a mocked item for testing #addItem',
         completed: false,
@@ -207,7 +207,7 @@ describe('ItemService', () => {
 
     it('should delete a given item', () => {
       const deleteItem: Item = {
-        id: 5,
+        _id: '5f0104f4c61dc153583ff61e',
         title: 'Mock item to delete',
         description: 'This is a mocked item for testing #deleteItem',
         completed: false,
@@ -221,7 +221,7 @@ describe('ItemService', () => {
         fail
       );
 
-      const req = httpTestingController.expectOne(`${itemService.itemsUrl}/${deleteItem.id}`);
+      const req = httpTestingController.expectOne(`${itemService.itemsUrl}/${deleteItem._id}`);
       expect(req.request.method).toEqual('DELETE');
 
       const expectedResponse = new HttpResponse({status: 204, statusText: 'No Content'});
@@ -229,7 +229,7 @@ describe('ItemService', () => {
     });
 
     it('should delete an item with given id', () => {
-      const itemId = 42;
+      const itemId = '5f01045e292dc153583f1e42';
 
       itemService.deleteItem(itemId).subscribe(
         data => expect(data).toBeNull(),

@@ -94,7 +94,7 @@ export class ItemListComponent implements OnInit {
       width: '50%', // TODO min-width ca. 300px
       // pass values manually to not change item outside of dialog TODO find better solution
       data: {
-        id: item.id,
+        _id: item._id,
         title: item.title,
         description: item.description,
         completed: item.completed,
