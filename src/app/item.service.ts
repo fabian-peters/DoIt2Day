@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Item} from './item';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Item } from './item';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
 
-  private itemsUrl = 'api/items';
-  private httpOptions = {
+  itemsUrl = 'api/items';
+  httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
@@ -40,4 +40,5 @@ export class ItemService {
 
     return this.http.delete<Item>(url, this.httpOptions);
   }
+
 }
