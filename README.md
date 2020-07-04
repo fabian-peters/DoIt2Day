@@ -1,7 +1,6 @@
 # DoIt2Day
 [![Build Status](https://travis-ci.com/fabian-peters/DoIt2Day.svg?token=CPToo8s7ErWVCsPSJ8yT&branch=master)](https://travis-ci.com/fabian-peters/DoIt2Day)
 [![DeepScan grade](https://deepscan.io/api/teams/9854/projects/12503/branches/192424/badge/grade.svg?token=a1fa0980263b30233c0ddf1e9c3ed778290db2ee)](https://deepscan.io/dashboard#view=project&tid=9854&pid=12503&bid=192424)
-[![BCH compliance](https://bettercodehub.com/edge/badge/fabian-peters/DoIt2Day?branch=master&token=336073ba7a71f7de4303a49299088d3c366e45e3)](https://bettercodehub.com/)
 [![CodeFactor](https://www.codefactor.io/repository/github/fabian-peters/doit2day/badge?s=d1c810ec4c801c2da10ea2b7d620d9e56c92809e)](https://www.codefactor.io/repository/github/fabian-peters/doit2day)
 [![codecov](https://codecov.io/gh/fabian-peters/DoIt2Day/branch/master/graph/badge.svg?token=MnC8lRjk8u)](https://codecov.io/gh/fabian-peters/DoIt2Day)
 
