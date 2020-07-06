@@ -4,7 +4,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/fabian-peters/doit2day/badge?s=d1c810ec4c801c2da10ea2b7d620d9e56c92809e)](https://www.codefactor.io/repository/github/fabian-peters/doit2day)
 [![codecov](https://codecov.io/gh/fabian-peters/DoIt2Day/branch/master/graph/badge.svg?token=MnC8lRjk8u)](https://codecov.io/gh/fabian-peters/DoIt2Day)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
+DoIt2Day is a simple todo list app. It was created as a sample project while learning Angular. You can find a basic server to use with this project [here](https://github.com/fabian-peters/DoIt2DayServer).
 
 ## Development server
 
