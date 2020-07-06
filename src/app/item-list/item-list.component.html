@@ -1,0 +1,53 @@
+<h2>All items</h2>
+
+<div class="control-container">
+  <a mat-button routerLink="/dashboard">go back</a>
+
+  <mat-slide-toggle [(ngModel)]="showCompleted" color="primary" (change)="getItems()">Show completed</mat-slide-toggle>
+  <mat-form-field class="filter">
+    <mat-label>Filter</mat-label>
+    <mat-select [formControl]="filters" multiple (valueChange)="getItems()">
+      <mat-select-trigger>
+        {{filters.value ? filters.value[0] : ''}}
+        <span *ngIf="filters.value?.length > 1" class="additional-selection">
+          (+{{filters.value?.length - 1}} {{filters.value?.length === 2 ? 'other' : 'others'}})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let filter of filterList" [value]="filter">
+        {{filter}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<mat-list>
+  <mat-list-item *ngIf="items.length == 0" class="empty-message">
+    No items found. Try adjusting the filters or add new items.
+  </mat-list-item>
+
+  <mat-list-item *ngFor="let item of items">
+    <mat-checkbox [(ngModel)]="item.completed" (change)="completeItem(item)">
+      <b>{{item.title}}</b>
+      <span class="description">{{item.description}}</span>
+    </mat-checkbox>
+
+    <span>{{item.targetDate | date: 'yyyy-MM-dd'}}</span>
+    <div class="icons">
+      <mat-icon matTooltip="Overdue" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
+                fontSet="material-icons-round" [ngStyle]="{'opacity': (item.targetDate | date: 'yyyy-MM-dd') <= (currentDate | date: 'yyyy-MM-dd') ? '60%': '0%'}">hourglass_bottom</mat-icon>
+      <mat-icon matTooltip="Urgent" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
+                fontSet="material-icons-round" [ngStyle]="{'opacity': item.urgent ? '60%': '0%'}">notifications_active</mat-icon>
+      <mat-icon matTooltip="Important" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
+                fontSet="material-icons-round" [ngStyle]="{'opacity': item.important ? '60%': '0%'}">priority_high</mat-icon>
+    </div>
+
+    <button mat-icon-button (click)="openEditDialog(item)">
+      <mat-icon matTooltip="Edit" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
+                fontSet="material-icons-round">edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="delete(item)">
+      <mat-icon matTooltip="Delete" [matTooltipShowDelay]="500" [matTooltipHideDelay]="100"
+                fontSet="material-icons-round">delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>

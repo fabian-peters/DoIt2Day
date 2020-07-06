@@ -1,0 +1,14 @@
+.add-item-row {
+  display: flex;
+  align-items: baseline;
+  width: 40%;
+  margin-left: 5px;
+}
+
+.add-item-row mat-form-field {
+  flex-grow: 2;
+}
+
+button {
+  margin-left: 5px;
+}

@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Angular Material */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* custom css*/
+button, a[mat-button] {
+  text-transform: uppercase
+}
+
+h2 {
+  margin-left: 5px;
+}
+
+.empty-message {
+  opacity: 75%;
+  font-style: italic;
+}

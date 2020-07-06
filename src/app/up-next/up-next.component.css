@@ -1,0 +1,29 @@
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.card-container mat-card {
+  /* TODO define max-width and min-width/line break */
+  width: 25%;
+}
+
+.mat-card {
+  display:flex;
+  flex-direction: column;
+}
+
+.mat-card-header {
+  flex-shrink: 0;
+}
+
+.mat-card-content{
+  flex-grow: 1;
+  overflow: auto;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-around;
+}

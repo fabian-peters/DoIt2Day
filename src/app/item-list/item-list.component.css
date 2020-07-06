@@ -1,0 +1,33 @@
+.control-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-right: 16px;
+}
+
+.additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+mat-list-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-list-item.empty-message {
+  display: flex;
+  justify-content: space-around;
+}
+
+mat-list-item mat-checkbox {
+  flex-grow: 2;
+}
+
+.icons mat-icon {
+  margin-left: 5px;
+}
+
+.description {
+  margin-left: 5px;
+}
